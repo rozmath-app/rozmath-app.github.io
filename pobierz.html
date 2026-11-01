@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Pobierz Rozmath</title>
+<link rel="icon" href="mathura_logo.svg" type="image/svg+xml">
+<script>
+  // Link do bio na Instagramie i kodów QR: iPhone → App Store, Android → Google Play, komputer → strona główna.
+  // Te same linki co w index.html (LINKS).
+  // iOS jeszcze niewydany (iPhone → strona główna) – po wydaniu w App Store wpisz: "https://apps.apple.com/pl/app/id6828502079"
+  var IOS = "";
+  var ANDROID = "https://play.google.com/store/apps/details?id=com.kr.mathura";
+  try {
+    var ua = navigator.userAgent || "";
+    var isAndroid = /Android/i.test(ua);
+    var isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    location.replace(isAndroid ? ANDROID : (isIOS && IOS) ? IOS : "index.html");
+  } catch (e) {
+    location.replace("index.html");   // coś poszło nie tak – strona główna
+  }
+  // zapas: gdyby po 3 s nadal nic się nie stało – strona główna
+  setTimeout(function () { location.replace("index.html"); }, 3000);
+</script>
+<!-- wyłączony JavaScript: od razu strona główna -->
+<noscript><meta http-equiv="refresh" content="0; url=index.html"></noscript>
+<style>
+  body { margin: 0; min-height: 100vh; background: #040053; color: #fff; text-align: center;
+         font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; padding: 48px 16px; box-sizing: border-box; }
+  a { color: #e5b800; }
+</style>
+</head>
+<body>
+  <!-- widoczne tylko, gdy przekierowanie nie zadziała (np. wyłączony JavaScript) -->
+  <p>Przekierowuję do sklepu…</p>
+  <p><a href="https://play.google.com/store/apps/details?id=com.kr.mathura">Google Play</a> · <a href="index.html">Strona Rozmath</a></p>
+</body>
+</html>
